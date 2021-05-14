@@ -51,6 +51,9 @@ public class Soldier {
         }
         return false;
     }
+    public String getPicture(){
+        return picture;
+    }
     public boolean stoleSoul(){
         if (stoleSoul) return true;
         else return false;

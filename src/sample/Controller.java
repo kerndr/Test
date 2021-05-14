@@ -7,6 +7,8 @@ import java.util.Arrays;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 
 public class Controller {
     private Dungeon[][] dungeonMaze=new Dungeon[4][4];
@@ -18,6 +20,8 @@ public class Controller {
     public Button zerozero,zeroone,zerotwo,zerothree,onezero,oneone,onetwo,onethree,twozero,twoone,twotwo,twothree,threezero,threeone,threetwo,threethree,attackButton,healButton;
     @FXML
     public Label fightStatusLabel1,fightStatusLabel2,playerLabel,opponentLabel,potionLabel,opponentName,gameResultLabel,dungeonName;
+    @FXML
+    public ImageView opponentImage;
     @FXML
     public void initialize(){
         initializeMazeAndStartGame();
@@ -40,19 +44,19 @@ public class Controller {
         buttonLayout[3][1]=onethree;
         buttonLayout[3][2]=twothree;
         buttonLayout[3][3]=threethree;
-        player = new Soldier("", "", "player.png", 1000000000, 1000000000, 100000000, 10, 1);
-        Soldier f1 = new Soldier("The Weakling", "he failed all his fighting classes, so he's not very strong.", "weakling.png", 50, 50, 15, 5, 0);
+        player = new Soldier("", "", "player.jpg", 1000000000, 1000000000, 100000000, 10, 1);
+        Soldier f1 = new Soldier("The Weakling", "he failed all his fighting classes, so he's not very strong.", "weakling.jpg", 50, 50, 15, 5, 0);
         Soldier f2 = new Soldier("The Alchemist", "she doesn't hit very hard, but she has some tricks up her sleeve that'll make you think twice.", "alchemist.png",  75, 75, 10, 5, 0);
-        Soldier f3 = new Soldier("The Titan", "he's very big and strong, but his health isn't great.", "titan.png", 75, 75, 25, 15, 0);
+        Soldier f3 = new Soldier("The Titan", "he's very big and strong, but his health isn't great.", "titan.jpg", 75, 75, 25, 15, 0);
         Soldier f4 = new Soldier("The Glitch", "ă̸̡̤̩̙̜͚͙͍̞͉̼͛͗͑̇̍̾̐̀̌̒̀̓̚͝ş̵̛̭̩͙̻͎̳͇̠͈̲̭̃͊̌͂̌̏̊͑̈́̍̚̚̚͝ͅl̵͉̰̲̹̲͉̅̐͒̋͒̉̀̋̈́̃́̕͜͜͝d̷̲̋̒̑̏̒̑͝͝f̸̨̖͉̹͎̐̃̎͋̄̑́̓̑i̵̞̝̭̦̣̖̓͆́y̵̧̛̟͙͉̥̣̰̝̠̒͋͋̉̈́͊̀̎̏̀́͜͝͝w̴͚͖̫͚͚͍̆͑̓̊̄̍ͅͅe̷̳̼̠͈͍̞̓͋̍̿̆ŗ̸̫̜̜̟͖̪͙̖̺̜͉̝͛̀̂́̌͝u̷̦̒̕i̸͇̠̳̜̊̄̈́̿̓͑̎̽̂v̵̧͕̼̞̖̮̬͖̘̣͕̖̊̀b̵̛͖̥̠͕̖̙̘͊̒j̴̨̛̞̞̭͓̪͕̯̣̩͎̦̣̳̃́̄͑ͅk̴͈͖̦̭͕̲̻̞͔͙̟̃̑̑͌̿̎͂͝ͅͅľ̷̛̬̗̺̤̲̠̟͕̪̩͇̑͝s̶̨̩͔͇̀͗̾͜͝j̴̟̠̒̄̇̽̈́̐̓͒̑͌̂̅̒͂̅", "glitch.png", 1, 1, 1, 1, 0);
-        Soldier f5 = new Soldier("The Nick", "the strongest enemy you will ever fight.", "nick.png", 150, 150, 30, 20, 0);
-        Soldier f6 = new Soldier("The Alien", "this enemy is out of this world!", "alien.png", 100,100, 20, 15, 0);
-        Soldier f7 = new Soldier("The Wolf", "a strong, quick enemy that will make you think fast.", "wolf.png", 70,70,25,15,0);
-        Soldier f8 = new Soldier("The Spider", "maybe you could step on it or something?", "spider.png", 20,20,10,5,0);
-        Soldier f9 = new Soldier("The Crab", "look out for its pincers!","crab.png",50,50,10,5,0);
+        Soldier f5 = new Soldier("The Nick", "the strongest enemy you will ever fight.", "nick.jpg", 150, 150, 30, 20, 0);
+        Soldier f6 = new Soldier("The Alien", "this enemy is out of this world!", "alien.jpg", 100,100, 20, 15, 0);
+        Soldier f7 = new Soldier("The Wolf", "a strong, quick enemy that will make you think fast.", "wolf.jpg", 70,70,25,15,0);
+        Soldier f8 = new Soldier("The Spider", "maybe you could step on it or something?", "spider.jpg", 20,20,10,5,0);
+        Soldier f9 = new Soldier("The Crab", "look out for its pincers!","crab.jpg",50,50,10,5,0);
         Soldier f10 = new Soldier("The Ogre","get out of my swamp!", "ogre.png", 150, 150, 20, 12, 0);
         Soldier f11 = new Soldier("The Reaper", "death itself has come for you.", "reaper.png", 1000000, 1000000, 10000, 10000, 0);
-        Soldier f12 = new Soldier("The Fighter", "this enemy looks just like you.", "fighter.png", 100, 100, 20, 10, 1);
+        Soldier f12 = new Soldier("The Fighter", "this enemy looks just like you.", "player.jpg", 100, 100, 20, 10, 1);
         Soldier f13 = new Soldier("The Slime", "a green blob that looks hard to kill.", "slime.png", 500, 500, 1, 1, 0);
         Soldier f14 = new Soldier("The Zombie","she rose from the dead just to fight you.", "zombie.png", 125, 125, 15, 10, 0);
         Soldier f15 = new Soldier("The Archer","his aim is dead on, but that might not help him very much in this fight.", "archer.png", 75, 75, 30, 5, 0);
@@ -107,6 +111,8 @@ public class Controller {
         fightStatusLabel1.setText("You are in "+currentDungeon.getName().toLowerCase()+". "+currentDungeon.getDescription());
         fightStatusLabel2.setText("You are fighting "+opponent.getName().toLowerCase()+": "+opponent.getDescription());
         setButtons();
+        Image image = new Image(String.valueOf(getClass().getResource(opponent.getPicture())));
+        opponentImage.setImage(image);
     }
     @FXML
     public void attackButtonPressed(){
