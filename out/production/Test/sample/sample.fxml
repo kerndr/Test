@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="35.0" BorderPane.alignment="CENTER">
+         <children>
+            <Separator opacity="0.0" prefHeight="0.0" prefWidth="250.0" />
+            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="622.0">
+               <children>
+                  <Label fx:id="fightStatusLabel1" text="You have dealt 0 damage. Your opponent is now at 0 health." wrapText="true" />
+                  <Label fx:id="fightStatusLabel2" text="Your opponent has dealt 0 damage. You are now at 0 health." wrapText="true" />
+               </children>
+            </VBox>
+            <Separator opacity="0.0" prefHeight="0.0" prefWidth="250.0" />
+         </children></HBox>
+   </bottom>
+   <top>
+      <HBox alignment="TOP_RIGHT" prefHeight="125.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="125.0" prefWidth="293.0" spacing="50.0">
+               <children>
+                  <Label prefHeight="45.0" prefWidth="299.0" text="Save Your Soul!" textFill="MAGENTA">
+                     <font>
+                        <Font name="Britannic Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="gameResultLabel" prefHeight="17.0" prefWidth="181.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <GridPane gridLinesVisible="true" prefHeight="100.0" prefWidth="125.0" style="-fx-border-color: black;">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="31.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.0" minWidth="10.0" prefWidth="31.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="262.0" minWidth="10.0" prefWidth="31.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="339.0" minWidth="10.0" prefWidth="30.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button fx:id="zerozero" mnemonicParsing="false" onMouseClicked="#button00Pressed" prefHeight="97.0" prefWidth="31.0" />
+                  <Button fx:id="onezero" mnemonicParsing="false" onMouseClicked="#button01Pressed" prefHeight="117.0" prefWidth="31.0" style="-fx-background-color: orange;" GridPane.columnIndex="1" />
+                  <Button fx:id="twozero" mnemonicParsing="false" onMouseClicked="#button02Pressed" prefHeight="87.0" prefWidth="31.0" style="-fx-background-color: yellow;" GridPane.columnIndex="2" />
+                  <Button fx:id="threezero" mnemonicParsing="false" onMouseClicked="#button03Pressed" prefHeight="83.0" prefWidth="30.0" style="-fx-background-color: yellow;" GridPane.columnIndex="3" />
+                  <Button fx:id="zeroone" mnemonicParsing="false" onMouseClicked="#button10Pressed" prefHeight="65.0" prefWidth="31.0" style="-fx-background-color: orange;" GridPane.rowIndex="1" />
+                  <Button fx:id="oneone" mnemonicParsing="false" onMouseClicked="#button11Pressed" prefHeight="55.0" prefWidth="31.0" style="-fx-background-color: yellow;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button fx:id="twoone" mnemonicParsing="false" onMouseClicked="#button12Pressed" prefHeight="57.0" prefWidth="31.0" style="-fx-background-color: yellow;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Button fx:id="threeone" mnemonicParsing="false" onMouseClicked="#button13Pressed" prefHeight="77.0" prefWidth="30.0" style="-fx-background-color: yellow;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Button fx:id="zerotwo" mnemonicParsing="false" onMouseClicked="#button20Pressed" prefHeight="49.0" prefWidth="31.0" style="-fx-background-color: yellow;" GridPane.rowIndex="2" />
+                  <Button fx:id="onetwo" mnemonicParsing="false" onMouseClicked="#button21Pressed" prefHeight="53.0" prefWidth="31.0" style="-fx-background-color: yellow;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button fx:id="twotwo" mnemonicParsing="false" onMouseClicked="#button22Pressed" prefHeight="74.0" prefWidth="31.0" style="-fx-background-color: yellow;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Button fx:id="threetwo" mnemonicParsing="false" onMouseClicked="#button23Pressed" prefHeight="56.0" prefWidth="30.0" style="-fx-background-color: yellow;" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Button fx:id="zerothree" mnemonicParsing="false" onMouseClicked="#button30Pressed" prefHeight="63.0" prefWidth="31.0" style="-fx-background-color: yellow;" GridPane.rowIndex="3" />
+                  <Button fx:id="onethree" mnemonicParsing="false" onMouseClicked="#button31Pressed" prefHeight="52.0" prefWidth="31.0" style="-fx-background-color: yellow;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Button fx:id="twothree" mnemonicParsing="false" onMouseClicked="#button32Pressed" prefHeight="53.0" prefWidth="31.0" style="-fx-background-color: yellow;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Button fx:id="threethree" mnemonicParsing="false" onMouseClicked="#button33Pressed" prefHeight="79.0" prefWidth="30.0" style="-fx-background-color: yellow;" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="152.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="attackButton" mnemonicParsing="false" onMouseClicked="#attackButtonPressed" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: orange;" text="Attack" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="healButton" mnemonicParsing="false" onMouseClicked="#healButtonPressed" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: red;" text="Heal" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label fx:id="potionLabel" text="Potions: 1">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <HBox prefHeight="353.0" prefWidth="448.0" spacing="25.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="playerName" text="Player" />
+                  <Label fx:id="playerLabel" text="Health: 100/100" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="328.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="opponentName" text="Opponent" />
+                  <Label fx:id="opponentLabel" text="Health: 100/100" />
+               </children>
+            </VBox>
+            <Label fx:id="dungeonName" prefHeight="17.0" prefWidth="129.0" text="Dungeon Name" />
+         </children>
+      </HBox>
+   </center>
+</BorderPane>
