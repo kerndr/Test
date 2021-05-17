@@ -44,7 +44,7 @@ public class Controller {
         buttonLayout[3][1]=onethree;
         buttonLayout[3][2]=twothree;
         buttonLayout[3][3]=threethree;
-        player = new Soldier("", "", "player.jpg", 1000000000, 1000000000, 100000000, 10, 1);
+        player = new Soldier("", "", "player.jpg", 150, 150, 25, 15, 5);
         Soldier f1 = new Soldier("The Weakling", "he failed all his fighting classes, so he's not very strong.", "weakling.jpg", 50, 50, 15, 5, 0);
         Soldier f2 = new Soldier("The Alchemist", "she doesn't hit very hard, but she has some tricks up her sleeve that'll make you think twice.", "alchemist.png",  75, 75, 10, 5, 0);
         Soldier f3 = new Soldier("The Titan", "he's very big and strong, but his health isn't great.", "titan.jpg", 75, 75, 25, 15, 0);
@@ -56,7 +56,7 @@ public class Controller {
         Soldier f9 = new Soldier("The Crab", "look out for its pincers!","crab.jpg",50,50,10,5,0);
         Soldier f10 = new Soldier("The Ogre","get out of my swamp!", "ogre.png", 150, 150, 20, 12, 0);
         Soldier f11 = new Soldier("The Reaper", "death itself has come for you.", "reaper.png", 1000000, 1000000, 10000, 10000, 0);
-        Soldier f12 = new Soldier("The Fighter", "this enemy looks just like you.", "player.jpg", 100, 100, 20, 10, 1);
+        Soldier f12 = new Soldier("The Fighter", "this enemy looks just like you.", "player.jpg", 150, 150, 25, 15, 0);
         Soldier f13 = new Soldier("The Slime", "a green blob that looks hard to kill.", "slime.png", 500, 500, 1, 1, 0);
         Soldier f14 = new Soldier("The Zombie","she rose from the dead just to fight you.", "zombie.png", 125, 125, 15, 10, 0);
         Soldier f15 = new Soldier("The Archer","his aim is dead on, but that might not help him very much in this fight.", "archer.png", 75, 75, 30, 5, 0);
@@ -113,6 +113,7 @@ public class Controller {
         setButtons();
         Image image = new Image(String.valueOf(getClass().getResource(opponent.getPicture())));
         opponentImage.setImage(image);
+        disableDungeonButtons();
     }
     @FXML
     public void attackButtonPressed(){
@@ -126,12 +127,13 @@ public class Controller {
             fightStatusLabel1.setText("You attacked with a strength of "+playerAttackStrength+". Your opponent is now dead.");
             disableFightButtons();
             if (opponent.stoleSoul()) {
+                setLabels();
                 fightStatusLabel2.setText("Great news! This is the fighter who stole your soul. You have reclaimed and reinserted your soul. You feel a sense of calm rush over you.");
                 gameResultLabel.setText("         You Win!");
                 return;
             }
             else {
-                fightStatusLabel2.setText("Unfortunately, this is not the fighter who stole your soul. Keep looking for it by moving to an adjacent green dungeon on the map.");
+                fightStatusLabel2.setText("Unfortunately, this is not the fighter who stole your soul. Keep looking for it by moving to an adjacent orange dungeon on the map.");
             }
             //enableDungeonButtons();
             setButtons();
@@ -207,16 +209,21 @@ public class Controller {
         opponentName.setText(opponent.getName());
         fightStatusLabel1.setText("");
         fightStatusLabel2.setText("");
-        player.reset();
+        //player.reset();
         setLabels();
+        disableDungeonButtons();
+        setButtons();
         if (!opponent.isAlive()){
             fightStatusLabel2.setText("You have already defeated the fighter in this dungeon. Please move on to an adjacent dungeon.");
         }
         else {
-            setButtons();
             enableFightButtons();
-            disableDungeonButtons();
+            fightStatusLabel1.setText("You are in "+currentDungeon.getName().toLowerCase()+". "+currentDungeon.getDescription());
+            fightStatusLabel2.setText("You are fighting "+opponent.getName().toLowerCase()+": "+opponent.getDescription());
         }
+        Image image = new Image(String.valueOf(getClass().getResource(opponent.getPicture())));
+        opponentImage.setImage(image);
+        dungeonName.setText(currentDungeon.getName());
     }
     @FXML
     public void button01Pressed(){
@@ -225,16 +232,21 @@ public class Controller {
         opponentName.setText(opponent.getName());
         fightStatusLabel1.setText("");
         fightStatusLabel2.setText("");
-        player.reset();
+        //player.reset();
         setLabels();
+        disableDungeonButtons();
+        setButtons();
         if (!opponent.isAlive()){
             fightStatusLabel2.setText("You have already defeated the fighter in this dungeon. Please move on to an adjacent dungeon.");
         }
         else {
-            setButtons();
             enableFightButtons();
-            disableDungeonButtons();
+            fightStatusLabel1.setText("You are in "+currentDungeon.getName().toLowerCase()+". "+currentDungeon.getDescription());
+            fightStatusLabel2.setText("You are fighting "+opponent.getName().toLowerCase()+": "+opponent.getDescription());
         }
+        Image image = new Image(String.valueOf(getClass().getResource(opponent.getPicture())));
+        opponentImage.setImage(image);
+        dungeonName.setText(currentDungeon.getName());
     }
     public void button02Pressed(){
         currentDungeon=dungeonMaze[0][2];
@@ -242,16 +254,21 @@ public class Controller {
         opponentName.setText(opponent.getName());
         fightStatusLabel1.setText("");
         fightStatusLabel2.setText("");
-        player.reset();
+        //player.reset();
         setLabels();
+        disableDungeonButtons();
+        setButtons();
         if (!opponent.isAlive()){
             fightStatusLabel2.setText("You have already defeated the fighter in this dungeon. Please move on to an adjacent dungeon.");
         }
         else {
-            setButtons();
             enableFightButtons();
-            disableDungeonButtons();
+            fightStatusLabel1.setText("You are in "+currentDungeon.getName().toLowerCase()+". "+currentDungeon.getDescription());
+            fightStatusLabel2.setText("You are fighting "+opponent.getName().toLowerCase()+": "+opponent.getDescription());
         }
+        Image image = new Image(String.valueOf(getClass().getResource(opponent.getPicture())));
+        opponentImage.setImage(image);
+        dungeonName.setText(currentDungeon.getName());
     }
     public void button03Pressed(){
         currentDungeon=dungeonMaze[0][3];
@@ -259,16 +276,21 @@ public class Controller {
         opponentName.setText(opponent.getName());
         fightStatusLabel1.setText("");
         fightStatusLabel2.setText("");
-        player.reset();
+        //player.reset();
         setLabels();
+        disableDungeonButtons();
+        setButtons();
         if (!opponent.isAlive()){
             fightStatusLabel2.setText("You have already defeated the fighter in this dungeon. Please move on to an adjacent dungeon.");
         }
         else {
-            setButtons();
             enableFightButtons();
-            disableDungeonButtons();
+            fightStatusLabel1.setText("You are in "+currentDungeon.getName().toLowerCase()+". "+currentDungeon.getDescription());
+            fightStatusLabel2.setText("You are fighting "+opponent.getName().toLowerCase()+": "+opponent.getDescription());
         }
+        Image image = new Image(String.valueOf(getClass().getResource(opponent.getPicture())));
+        opponentImage.setImage(image);
+        dungeonName.setText(currentDungeon.getName());
     }
     public void button10Pressed(){
         currentDungeon=dungeonMaze[1][0];
@@ -276,16 +298,21 @@ public class Controller {
         opponentName.setText(opponent.getName());
         fightStatusLabel1.setText("");
         fightStatusLabel2.setText("");
-        player.reset();
+        //player.reset();
         setLabels();
+        disableDungeonButtons();
+        setButtons();
         if (!opponent.isAlive()){
             fightStatusLabel2.setText("You have already defeated the fighter in this dungeon. Please move on to an adjacent dungeon.");
         }
         else {
-            setButtons();
             enableFightButtons();
-            disableDungeonButtons();
+            fightStatusLabel1.setText("You are in "+currentDungeon.getName().toLowerCase()+". "+currentDungeon.getDescription());
+            fightStatusLabel2.setText("You are fighting "+opponent.getName().toLowerCase()+": "+opponent.getDescription());
         }
+        Image image = new Image(String.valueOf(getClass().getResource(opponent.getPicture())));
+        opponentImage.setImage(image);
+        dungeonName.setText(currentDungeon.getName());
     }
     public void button11Pressed(){
         currentDungeon=dungeonMaze[1][1];
@@ -293,16 +320,21 @@ public class Controller {
         opponentName.setText(opponent.getName());
         fightStatusLabel1.setText("");
         fightStatusLabel2.setText("");
-        player.reset();
+        //player.reset();
         setLabels();
+        disableDungeonButtons();
+        setButtons();
         if (!opponent.isAlive()){
             fightStatusLabel2.setText("You have already defeated the fighter in this dungeon. Please move on to an adjacent dungeon.");
         }
         else {
-            setButtons();
             enableFightButtons();
-            disableDungeonButtons();
+            fightStatusLabel1.setText("You are in "+currentDungeon.getName().toLowerCase()+". "+currentDungeon.getDescription());
+            fightStatusLabel2.setText("You are fighting "+opponent.getName().toLowerCase()+": "+opponent.getDescription());
         }
+        Image image = new Image(String.valueOf(getClass().getResource(opponent.getPicture())));
+        opponentImage.setImage(image);
+        dungeonName.setText(currentDungeon.getName());
     }
     public void button12Pressed(){
         currentDungeon=dungeonMaze[1][2];
@@ -310,16 +342,21 @@ public class Controller {
         opponentName.setText(opponent.getName());
         fightStatusLabel1.setText("");
         fightStatusLabel2.setText("");
-        player.reset();
+        //player.reset();
         setLabels();
+        disableDungeonButtons();
+        setButtons();
         if (!opponent.isAlive()){
             fightStatusLabel2.setText("You have already defeated the fighter in this dungeon. Please move on to an adjacent dungeon.");
         }
         else {
-            setButtons();
             enableFightButtons();
-            disableDungeonButtons();
+            fightStatusLabel1.setText("You are in "+currentDungeon.getName().toLowerCase()+". "+currentDungeon.getDescription());
+            fightStatusLabel2.setText("You are fighting "+opponent.getName().toLowerCase()+": "+opponent.getDescription());
         }
+        Image image = new Image(String.valueOf(getClass().getResource(opponent.getPicture())));
+        opponentImage.setImage(image);
+        dungeonName.setText(currentDungeon.getName());
     }
     public void button13Pressed(){
         currentDungeon=dungeonMaze[1][3];
@@ -327,16 +364,21 @@ public class Controller {
         opponentName.setText(opponent.getName());
         fightStatusLabel1.setText("");
         fightStatusLabel2.setText("");
-        player.reset();
+        //player.reset();
         setLabels();
+        disableDungeonButtons();
+        setButtons();
         if (!opponent.isAlive()){
             fightStatusLabel2.setText("You have already defeated the fighter in this dungeon. Please move on to an adjacent dungeon.");
         }
         else {
-            setButtons();
             enableFightButtons();
-            disableDungeonButtons();
+            fightStatusLabel1.setText("You are in "+currentDungeon.getName().toLowerCase()+". "+currentDungeon.getDescription());
+            fightStatusLabel2.setText("You are fighting "+opponent.getName().toLowerCase()+": "+opponent.getDescription());
         }
+        Image image = new Image(String.valueOf(getClass().getResource(opponent.getPicture())));
+        opponentImage.setImage(image);
+        dungeonName.setText(currentDungeon.getName());
     }
     public void button20Pressed(){
         currentDungeon=dungeonMaze[2][0];
@@ -344,16 +386,21 @@ public class Controller {
         opponentName.setText(opponent.getName());
         fightStatusLabel1.setText("");
         fightStatusLabel2.setText("");
-        player.reset();
+        //player.reset();
         setLabels();
+        disableDungeonButtons();
+        setButtons();
         if (!opponent.isAlive()){
             fightStatusLabel2.setText("You have already defeated the fighter in this dungeon. Please move on to an adjacent dungeon.");
         }
         else {
-            setButtons();
             enableFightButtons();
-            disableDungeonButtons();
+            fightStatusLabel1.setText("You are in "+currentDungeon.getName().toLowerCase()+". "+currentDungeon.getDescription());
+            fightStatusLabel2.setText("You are fighting "+opponent.getName().toLowerCase()+": "+opponent.getDescription());
         }
+        Image image = new Image(String.valueOf(getClass().getResource(opponent.getPicture())));
+        opponentImage.setImage(image);
+        dungeonName.setText(currentDungeon.getName());
     }
     public void button21Pressed(){
         currentDungeon=dungeonMaze[2][1];
@@ -361,16 +408,21 @@ public class Controller {
         opponentName.setText(opponent.getName());
         fightStatusLabel1.setText("");
         fightStatusLabel2.setText("");
-        player.reset();
+        //player.reset();
         setLabels();
+        disableDungeonButtons();
+        setButtons();
         if (!opponent.isAlive()){
             fightStatusLabel2.setText("You have already defeated the fighter in this dungeon. Please move on to an adjacent dungeon.");
         }
         else {
-            setButtons();
             enableFightButtons();
-            disableDungeonButtons();
+            fightStatusLabel1.setText("You are in "+currentDungeon.getName().toLowerCase()+". "+currentDungeon.getDescription());
+            fightStatusLabel2.setText("You are fighting "+opponent.getName().toLowerCase()+": "+opponent.getDescription());
         }
+        Image image = new Image(String.valueOf(getClass().getResource(opponent.getPicture())));
+        opponentImage.setImage(image);
+        dungeonName.setText(currentDungeon.getName());
     }
     public void button22Pressed(){
         currentDungeon=dungeonMaze[2][2];
@@ -378,16 +430,21 @@ public class Controller {
         opponentName.setText(opponent.getName());
         fightStatusLabel1.setText("");
         fightStatusLabel2.setText("");
-        player.reset();
+        //player.reset();
         setLabels();
+        disableDungeonButtons();
+        setButtons();
         if (!opponent.isAlive()){
             fightStatusLabel2.setText("You have already defeated the fighter in this dungeon. Please move on to an adjacent dungeon.");
         }
         else {
-            setButtons();
             enableFightButtons();
-            disableDungeonButtons();
+            fightStatusLabel1.setText("You are in "+currentDungeon.getName().toLowerCase()+". "+currentDungeon.getDescription());
+            fightStatusLabel2.setText("You are fighting "+opponent.getName().toLowerCase()+": "+opponent.getDescription());
         }
+        Image image = new Image(String.valueOf(getClass().getResource(opponent.getPicture())));
+        opponentImage.setImage(image);
+        dungeonName.setText(currentDungeon.getName());
     }
     public void button23Pressed(){
         currentDungeon=dungeonMaze[2][3];
@@ -395,16 +452,21 @@ public class Controller {
         opponentName.setText(opponent.getName());
         fightStatusLabel1.setText("");
         fightStatusLabel2.setText("");
-        player.reset();
+        //player.reset();
         setLabels();
+        disableDungeonButtons();
+        setButtons();
         if (!opponent.isAlive()){
             fightStatusLabel2.setText("You have already defeated the fighter in this dungeon. Please move on to an adjacent dungeon.");
         }
         else {
-            setButtons();
             enableFightButtons();
-            disableDungeonButtons();
+            fightStatusLabel1.setText("You are in "+currentDungeon.getName().toLowerCase()+". "+currentDungeon.getDescription());
+            fightStatusLabel2.setText("You are fighting "+opponent.getName().toLowerCase()+": "+opponent.getDescription());
         }
+        Image image = new Image(String.valueOf(getClass().getResource(opponent.getPicture())));
+        opponentImage.setImage(image);
+        dungeonName.setText(currentDungeon.getName());
     }
     public void button30Pressed(){
         currentDungeon=dungeonMaze[3][0];
@@ -412,16 +474,21 @@ public class Controller {
         opponentName.setText(opponent.getName());
         fightStatusLabel1.setText("");
         fightStatusLabel2.setText("");
-        player.reset();
+        //player.reset();
         setLabels();
+        disableDungeonButtons();
+        setButtons();
         if (!opponent.isAlive()){
             fightStatusLabel2.setText("You have already defeated the fighter in this dungeon. Please move on to an adjacent dungeon.");
         }
         else {
-            setButtons();
             enableFightButtons();
-            disableDungeonButtons();
+            fightStatusLabel1.setText("You are in "+currentDungeon.getName().toLowerCase()+". "+currentDungeon.getDescription());
+            fightStatusLabel2.setText("You are fighting "+opponent.getName().toLowerCase()+": "+opponent.getDescription());
         }
+        Image image = new Image(String.valueOf(getClass().getResource(opponent.getPicture())));
+        opponentImage.setImage(image);
+        dungeonName.setText(currentDungeon.getName());
     }
     public void button31Pressed(){
         currentDungeon=dungeonMaze[3][1];
@@ -429,16 +496,21 @@ public class Controller {
         opponentName.setText(opponent.getName());
         fightStatusLabel1.setText("");
         fightStatusLabel2.setText("");
-        player.reset();
+        //player.reset();
         setLabels();
+        disableDungeonButtons();
+        setButtons();
         if (!opponent.isAlive()){
             fightStatusLabel2.setText("You have already defeated the fighter in this dungeon. Please move on to an adjacent dungeon.");
         }
         else {
-            setButtons();
             enableFightButtons();
-            disableDungeonButtons();
+            fightStatusLabel1.setText("You are in "+currentDungeon.getName().toLowerCase()+". "+currentDungeon.getDescription());
+            fightStatusLabel2.setText("You are fighting "+opponent.getName().toLowerCase()+": "+opponent.getDescription());
         }
+        Image image = new Image(String.valueOf(getClass().getResource(opponent.getPicture())));
+        opponentImage.setImage(image);
+        dungeonName.setText(currentDungeon.getName());
     }
     public void button32Pressed(){
         currentDungeon=dungeonMaze[3][2];
@@ -446,16 +518,21 @@ public class Controller {
         opponentName.setText(opponent.getName());
         fightStatusLabel1.setText("");
         fightStatusLabel2.setText("");
-        player.reset();
+        //player.reset();
         setLabels();
+        disableDungeonButtons();
+        setButtons();
         if (!opponent.isAlive()){
             fightStatusLabel2.setText("You have already defeated the fighter in this dungeon. Please move on to an adjacent dungeon.");
         }
         else {
-            setButtons();
             enableFightButtons();
-            disableDungeonButtons();
+            fightStatusLabel1.setText("You are in "+currentDungeon.getName().toLowerCase()+". "+currentDungeon.getDescription());
+            fightStatusLabel2.setText("You are fighting "+opponent.getName().toLowerCase()+": "+opponent.getDescription());
         }
+        Image image = new Image(String.valueOf(getClass().getResource(opponent.getPicture())));
+        opponentImage.setImage(image);
+        dungeonName.setText(currentDungeon.getName());
     }
     public void button33Pressed(){
         currentDungeon=dungeonMaze[3][3];
@@ -463,16 +540,21 @@ public class Controller {
         opponentName.setText(opponent.getName());
         fightStatusLabel1.setText("You are in the "+currentDungeon.getName());
         fightStatusLabel2.setText("");
-        player.reset();
+        //player.reset();
         setLabels();
+        disableDungeonButtons();
+        setButtons();
         if (!opponent.isAlive()){
             fightStatusLabel2.setText("You have already defeated the fighter in this dungeon. Please move on to an adjacent dungeon.");
         }
         else {
-            setButtons();
             enableFightButtons();
-            disableDungeonButtons();
+            fightStatusLabel1.setText("You are in "+currentDungeon.getName().toLowerCase()+". "+currentDungeon.getDescription());
+            fightStatusLabel2.setText("You are fighting "+opponent.getName().toLowerCase()+": "+opponent.getDescription());
         }
+        Image image = new Image(String.valueOf(getClass().getResource(opponent.getPicture())));
+        opponentImage.setImage(image);
+        dungeonName.setText(currentDungeon.getName());
     }
     @FXML
     public void setLabels(){

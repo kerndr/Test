@@ -97,14 +97,17 @@
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@player.jpg" />
+                     </image></ImageView>
                   <Label fx:id="playerName" text="Player" />
                   <Label fx:id="playerLabel" text="Health: 100/100" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="328.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="opponentImage" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
                   <Label fx:id="opponentName" text="Opponent" />
                   <Label fx:id="opponentLabel" text="Health: 100/100" />
                </children>
